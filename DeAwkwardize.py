@@ -226,5 +226,4 @@ class deawkwardize:
                 return reawked_code_return_value
 
             return wrapper
-            func
         return real_decorator
