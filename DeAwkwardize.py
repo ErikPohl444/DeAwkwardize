@@ -36,7 +36,7 @@ __status__ = "Beta"
 
 
 class deawkwardize:
-    '''
+    """
     Deawkwardize allows a user to
     deawkwardize a python program by splitting it into a file
     with tokens instead of comments/logging and a token file
@@ -45,7 +45,7 @@ class deawkwardize:
         replaces tokens with logging messages to restore logging
         reawk file output is a method which
         outputs a file in its original form with full comments and logging
-    '''
+    """
 
     def __init__(self):
         self.reawk_token_dictionary = {}
@@ -65,12 +65,12 @@ class deawkwardize:
             ]
 
     def load_deawk_token_dictionary(self, deawk_token_file_name):
-        '''
+        """
         Accepts as input the name of a token dictionary file
         loads the tokens into a token dictionary
         :param deawk_token_file_name: Token dictionary file name
         :return: True
-        '''
+        """
         try:
             with open(deawk_token_file_name, 'r') as deawk_file_handle:
                 for fline in deawk_file_handle:
@@ -87,12 +87,12 @@ class deawkwardize:
             return self.deawk_token_dictionary[
                 code_line_to_generate_a_token_for
             ]
-        except:
+        except KeyError:
             self.current_token_sequence_number += 1
             self.deawk_token_dictionary[
                 code_line_to_generate_a_token_for
             ] = self.current_token_sequence_number
-            return (str(self.current_token_sequence_number))
+            return str(self.current_token_sequence_number)
 
     def tokenize(self, line, prefix, deawk_output_handle, token_file_handle):
         newtoken = prefix + \
@@ -117,7 +117,7 @@ class deawkwardize:
               deawk_output_file_prefix='deawked_',
               deawk_token_file='deawkdict.txt'
               ):
-        '''
+        """
         Accepts as input a python program name to output,
         replaces all the comments and logging messages in it with tokens
         and writes the abbreviated [deawkwardized] file to and outfile
@@ -127,7 +127,7 @@ class deawkwardize:
         python program
         :param deawk_token_file: output token file
         :return: True
-        '''
+        """
 
         deawk_output_file_prefix = deawk_output_file_prefix +\
             deawk_input_file_name
@@ -146,7 +146,7 @@ class deawkwardize:
         return True
 
     def reawk_fileput(self, reawk_input_file_name):
-        '''
+        """
         This takes a token dictionary
         and restores a file to its awkward glory
         with comments and full logging messages
@@ -154,7 +154,7 @@ class deawkwardize:
         :param reawk_input_file_name: File name to output
         with comments and logging restored
         :return: True
-        '''
+        """
         with open(reawk_input_file_name, 'r') \
                 as reawk_file_handle:
             for reawk_file_line in reawk_file_handle:

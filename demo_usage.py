@@ -14,22 +14,22 @@ da.load_deawk_token_dictionary('deawkdict.txt')
 
 @da.reawk_logging()
 def foo():
-    '''
+    """
     the #%11 gets translated at runtime to a logging message
     of hello by reawk_logging
     :return:
-    '''
+    """
     # %11
     print("obligatory foo")
 
 
 @da.reawk_logging('')
 def bar():
-    '''
+    """
     the #%11 gets translated at runtime to a logging message of hello
     by reawk_logging
     :return:
-    '''
+    """
     # %11
     print("obligatory bar")
 
